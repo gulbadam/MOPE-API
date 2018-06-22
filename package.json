@@ -1,0 +1,15 @@
+{
+  "name": "MOPE-API",
+  "version": "1.0.0",
+  "main": "script.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "repository": "https://github.com/gulbadam/MOPE-API.git",
+  "author": "yelena guliyeva <gulbadam@gulbadam.com>",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3"
+  }
+}
