@@ -27,11 +27,13 @@ app.use(bodyParser.json());
 app.get('/', (req, res) => res.send(database.users));
 
 app.post('/signin', (req, res) => {
-    //var a = JSON.parse(req.body);
+    
     if (req.body.email === database.users[0].email && req.body.password === database.users[0].password) {
-        res.send('signed in');
+        res.json(database.users[0]);
+        console.log(data.users[0])
     } else {
-        res.json('access denied');
+        res.status(400).json("error login");
+        console.log("not")
     }
 })
 
