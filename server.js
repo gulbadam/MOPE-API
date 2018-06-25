@@ -7,7 +7,7 @@ const app = express();
 app.use(bodyParser.json());
 const PORT= 3001;
 
-const postgres = knex({
+const db = knex({
     client: 'pg',
     connection: {
         host: '127.0.0.1',
@@ -16,22 +16,24 @@ const postgres = knex({
         database: 'mopedb'
     }
 });
-console.log(postgres.select('*').from('users'));
+db.select('*').from('users').then(data => {
+    console.log(data);
+})
 
-// const database = {
-//     users: [{
-//         id: '123',
-//         name: 'Yelena',
-//         email: 'gulbadam@gulbadam.com',
-//         entries: 0,
-//         password: "123456",
-//         joined: new Date()
-//     }],
-//     secrets: {
-//         users_id: '123',
-//         hash: 'wghhh'
-//     }
-// }
+const database = {
+    users: [{
+        id: '123',
+        name: 'Yelena',
+        email: 'gulbadam@gulbadam.com',
+        entries: 0,
+        password: "123456",
+        joined: new Date()
+    }],
+    secrets: {
+        users_id: '123',
+        hash: 'wghhh'
+    }
+}
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -66,13 +68,11 @@ app.put('/image', (req, res) => {
 
 app.post('/register', (req, res) => {
     const {email, name, password} =req.body;
-    database.users.push({
-        id: '124',
-        name: name,
-        email: email,
-        entries: 0,
-        joined: new Date()
-    })
+   db('users').insert({
+       email: email,
+       name: name,
+       joined: new Date()
+   }).then(console.log)
     res.json(database.users[database.users.length - 1])
 })
 
