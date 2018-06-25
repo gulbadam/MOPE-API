@@ -20,20 +20,20 @@ const db = knex({
 //     console.log(data);
 // })
 
-const database = {
-    users: [{
-        id: '123',
-        name: 'Yelena',
-        email: 'gulbadam@gulbadam.com',
-        entries: 0,
-        password: "123456",
-        joined: new Date()
-    }],
-    secrets: {
-        users_id: '123',
-        hash: 'wghhh'
-    }
-}
+// const database = {
+//     users: [{
+//         id: '123',
+//         name: 'Yelena',
+//         email: 'gulbadam@gulbadam.com',
+//         entries: 0,
+//         password: "123456",
+//         joined: new Date()
+//     }],
+//     secrets: {
+//         users_id: '123',
+//         hash: 'wghhh'
+//     }
+// }
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -51,7 +51,9 @@ app.post('/signin', (req, res) => {
                 res.json(user[0])
             })
             .catch(err =>res.status(400).json('unable to get user'))
-        }
+        } else{
+        res.status(400).json("wrong credentials")
+    }
     })
   .catch(err => res.status(400).json('wrong credentials'))
 })
