@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const bcrypt = require ('bcrypt-nodejs');
 const cors = require ('cors');
 const knex =require ('knex');
+const Clarifai = require ("clarifai");
 const app = express();
 const register =require('./controllers/register');
 const signin = require('./controllers/signin');
@@ -20,24 +21,6 @@ const db = knex({
         database: 'mopedb'
     }
 });
-// db.select('*').from('users').then(data => {
-//     console.log(data);
-// })
-
-// const database = {
-//     users: [{
-//         id: '123',
-//         name: 'Yelena',
-//         email: 'gulbadam@gulbadam.com',
-//         entries: 0,
-//         password: "123456",
-//         joined: new Date()
-//     }],
-//     secrets: {
-//         users_id: '123',
-//         hash: 'wghhh'
-//     }
-// }
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -46,6 +29,8 @@ app.use(bodyParser.json());
 app.post('/signin', (req, res) => {signin.handleSignin(req, res, db, bcrypt)})
 
 app.put('/image', (res, req) => {image.handleImage(req, res, db)})
+app.post('/imageurl', (res, req) => {image.handleApiCall(req, res)})
+
 
 
 app.post('/register', (req, res) => {register.handleRegister(req, res, db, bcrypt)})
