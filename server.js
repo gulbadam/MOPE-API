@@ -9,6 +9,9 @@ const register =require('./controllers/register');
 const signin = require('./controllers/signin');
 const profile = require('./controllers/profile');
 const image = require('./controllers/image');
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
 app.use(bodyParser.json());
 const PORT= 3001;
 
@@ -23,13 +26,18 @@ const db = knex({
 });
 
 app.use(cors());
-app.use(bodyParser.json());
+
 //app.get('/', (req, res) => res.send(database.users));
 
 app.post('/signin', (req, res) => {signin.handleSignin(req, res, db, bcrypt)})
 
-app.put('/image', (res, req) => {image.handleImage(req, res, db)})
-app.post('/imageurl', (res, req) => {image.handleApiCall(req, res)})
+app.put('/image', (req, res) => {image.handleImage(req, res, db)})
+app.post('/imageurl', (req, res) => {
+    console.log(req.body);
+    console.log(req.body.input)
+    image.handleApiCall(req, res)
+})
+
 
 
 
