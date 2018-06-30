@@ -41,7 +41,9 @@ app.post('/imageurl', (req, res) => {
 app.post('/colors', (req, res) => {
     image.handleApiColors(req, res)
 })
-
+app.post('/demographics', (req, res) => {
+    image.handleApiDemographics(req, res)
+})
 app.post('/general', (req, res) => {
     image.handleApiGeneral(req, res)
 })
