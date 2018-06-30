@@ -31,16 +31,20 @@ app.use(cors());
 
 app.post('/signin', (req, res) => {signin.handleSignin(req, res, db, bcrypt)})
 
-app.put('/image', (req, res) => {image.handleImage(req, res, db)})
-app.post('/imageurl', (req, res) => {
-    console.log(req.body);
-    console.log(req.body.input)
-    image.handleApiCall(req, res)
+app.put('/image', (req, res) => {
+    console.log("body" + req.body); image.handleImage(req, res, db)
 })
 
+app.post('/imageurl', (req, res) => {
+    image.handleApiCall(req, res)
+})
+app.post('/colors', (req, res) => {
+    image.handleApiColors(req, res)
+})
 
-
-
+app.post('/general', (req, res) => {
+    image.handleApiGeneral(req, res)
+})
 app.post('/register', (req, res) => {register.handleRegister(req, res, db, bcrypt)})
 
 app.get('/profile/:id', (req, res) => {profile.handleProfileGet(req, res, db)})
