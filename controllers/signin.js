@@ -1,15 +1,15 @@
 const jwt = require('jsonwebtoken');
 
 // Redis Setup
-const redis = require('redis');
-const hostRedis = "ec2-54-236-162-33.compute-1.amazonaws.com" || '127.0.0.1'
-// update  host to the proper address in production
-const redisClient = redis.createClient({
-    host: hostRedis,
-    user: 'h',
-    port: 30429,
-    password: 'p851c4c9dc85c5303f97e90714f831dc0b0906072b8d0322f9cd8c412aaf8b761'
-});
+const redisClient = require('redis').createClient(process.env.Redis_URL);
+// const hostRedis = "ec2-54-236-162-33.compute-1.amazonaws.com" || '127.0.0.1'
+// // update  host to the proper address in production
+// const redisClient = redis.createClient({
+//     host: hostRedis,
+//     user: 'h',
+//     port: 30429,
+//     password: 'p851c4c9dc85c5303f97e90714f831dc0b0906072b8d0322f9cd8c412aaf8b761'
+// });
 
 const signToken = (username) => {
     const jwtPayload = {
