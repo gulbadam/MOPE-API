@@ -18,5 +18,8 @@
     "knex": "^0.14.6",
     "pg": "^7.4.3",
     "redis": "^2.8.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.5"
   }
 }
