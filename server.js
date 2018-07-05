@@ -46,5 +46,9 @@ app.post('/general',  (req, res) => {image.handleApiGeneral(req, res)})
 app.post('/register', (req, res) => {register.handleRegister(req, res, db, bcrypt)})
 app.get('/profile/:id', auth.requireAuth, (req, res) => { profile.handleProfileGet(req, res, db)})
 app.post('/profile/:id', auth.requireAuth, (req, res) => { profile.handleProfileUpdate(req, res, db)})
-app.listen(PORT, () => {console.log(`app is running on port ${PORT}`);
+//app.listen(PORT, () => {console.log(`app is running on port ${PORT}`);
+
+//});
+app.listen(process.env.PORT || 3001, function () {
+    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
 });
