@@ -4,31 +4,32 @@ const bcrypt = require ('bcrypt-nodejs');
 const cors = require ('cors');
 const knex =require ('knex');
 
-const app = express();
+
 const register =require('./controllers/register');
 const signin = require('./controllers/signin');
 const profile = require('./controllers/profile');
 const image = require('./controllers/image');
 const auth = require('./controllers/authorization');
-app.use(bodyParser.urlencoded({
-    extended: false
-}));
-app.use(bodyParser.json());
+
 const PORT = process.env.PORT || 3001 ;
 
 const db = knex({
     client: 'pg',
     connection: {
-        //host: '127.0.0.1',
-        // user: 'gulbadam',
-        // password: '',
-        // database: 'mopedb'
-        connectionString: process.env.DATABASE_URL,
-        ssl: true
+        host: '127.0.0.1',
+        user: 'gulbadam',
+        password: '',
+        database: 'mopedb'
+        // connectionString: process.env.DATABASE_URL,
+        // ssl: true
     }
 });
-
+const app = express();
 app.use(cors());
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
+app.use(bodyParser.json());
 
 //app.get('/', (req, res) => res.send(database.users));
 app.get('/', (req, res) => res.send("working"));
