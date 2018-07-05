@@ -1,8 +1,9 @@
 const jwt = require('jsonwebtoken');
 
 // Redis Setup
-const redis = require('redis')
-const redisClient = redis.createClient({host: '127.0.0.1'});
+//const redis = require('redis')
+//const redisClient = redis.createClient({host: '127.0.0.1'});
+const redisclient = require('redis').createClient(process.env.REDIS_URL);
 
 const signToken = (username) => {
     const jwtPayload = {

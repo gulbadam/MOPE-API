@@ -16,12 +16,12 @@ const PORT = process.env.PORT || 3001 ;
 const db = knex({
     client: 'pg',
     connection: {
-        host: '127.0.0.1',
-        user: 'gulbadam',
-        password: '',
-        database: 'mopedb'
-        // connectionString: process.env.DATABASE_URL,
-        // ssl: true
+        // host: '127.0.0.1',
+        // user: 'gulbadam',
+        // password: '',
+        // database: 'mopedb'
+        connectionString: process.env.DATABASE_URL,
+        ssl: true
     }
 });
 const app = express();
