@@ -11,7 +11,7 @@ const profile = require('./controllers/profile');
 const image = require('./controllers/image');
 
 
-const PORT = process.env.PORT || 3001 ;
+//const PORT = process.env.PORT || 3001 ;
 
 const db = knex({
     client: 'pg',
