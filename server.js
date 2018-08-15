@@ -45,7 +45,7 @@ app.post('/demographics',  (req, res) => {image.handleApiDemographics(req, res)}
 app.post('/general',  (req, res) => {image.handleApiGeneral(req, res)})
 app.post('/register', (req, res) => {register.handleRegister(req, res, db, bcrypt)})
 app.get('/profile/:id',  (req, res) => { profile.handleProfileGet(req, res, db)})
-//app.post('/profile/:id',  (req, res) => { profile.handleProfileUpdate(req, res, db)})
+app.post('/profile/:id',  (req, res) => { profile.handleProfileUpdate(req, res, db)})
 //app.listen(PORT, () => {console.log(`app is running on port ${PORT}`);
 
 //});
