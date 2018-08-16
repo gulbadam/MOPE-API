@@ -1,0 +1,28 @@
+version: '3.6'
+
+services:
+  # Backend API
+  mope-api:
+    container_name: backend
+    build: ./
+    command: yarn start
+    working_dir: /STUDY/containers/mope-api
+    environment:
+      POSTGRES_URI: postgres://gulbadam:secret@postgres:5432/mope-docker
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./:/STUDY/containers/mope-api
+# Postgress
+  postgres:
+    environment:
+      POSTGRES_USER: gulbadam
+      POSTGRES_PASSWORD: secret
+      #POSTGRES_URL: postgres://gulbadam:secret@localhost:5432/mope-docker
+      POSTGRES_DB: mope-docker
+      POSTGRES_HOST: postgres
+    build: ./postgres
+    ports:
+      - "5432:5432"
+
+    
