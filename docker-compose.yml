@@ -8,18 +8,20 @@ services:
     command: yarn start
     working_dir: /STUDY/containers/mope-api
     environment:
-      POSTGRES_URI: postgres://gulbadam:secret@postgres:5432/mope-docker
+      POSTGRES_URI: postgres:secret//gulbadam:secret@postgres:5432/mope-db
     ports:
       - "3001:3001"
     volumes:
       - ./:/STUDY/containers/mope-api
 # Postgress
+
   postgres:
+    container_name: postgres
     environment:
       POSTGRES_USER: gulbadam
       POSTGRES_PASSWORD: secret
-      #POSTGRES_URL: postgres://gulbadam:secret@localhost:5432/mope-docker
-      POSTGRES_DB: mope-docker
+      POSTGRES_URL: postgres://gulbadam:secret@localhost:5432/mope-db
+      POSTGRES_DB: mope-db
       POSTGRES_HOST: postgres
     build: ./postgres
     ports:

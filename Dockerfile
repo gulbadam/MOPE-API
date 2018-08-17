@@ -1,5 +1,5 @@
-FROM node:alpine
+FROM node:carbon-jessie
 WORKDIR /STUDY/containers/mope-api
 COPY ./ ./
-RUN npm install
+RUN yarn --pure-lockfile
 CMD ["/bin/sh"]
