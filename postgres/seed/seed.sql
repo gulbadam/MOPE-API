@@ -1,5 +1,5 @@
 BEGIN TRANSACTION;
 
-INSERT into users (name, email, entries, joined) values ('lena', 'gulbadam@gulbadam.com', 19, '2018-06-26');
-INSERT into login (hash, email) values ('$2a$10$nr/6CCFpN35cQbJHAm7VQO97DIsMkaWHg8z1lU.cq3m4ww73eu4pu', 'gulbadam@gulbadam.com');
+insert into users (name, email, entries, joined) values ('a', 'a@a.com', 5, '2018-01-01');
+insert into login (hash, email) values ('$2a$10$WAK21U0LWl7C//jJ.DOB2uPP1DJQh7KUDgasdyQeGzkop2Pzl8W7u', 'a@a.com');
 COMMIT;
