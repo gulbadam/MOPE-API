@@ -9,6 +9,7 @@ services:
     working_dir: /STUDY/containers/mope-api
     environment:
       POSTGRES_URI: postgres:secret//gulbadam:secret@postgres:5432/mope-db
+      REDIS_URI: redis://redis:6379
     ports:
       - "3001:3001"
     volumes:
@@ -26,5 +27,11 @@ services:
     build: ./postgres
     ports:
       - "5432:5432"
+      # Redis
+  redis:
+    container_name: redis
+    image: redis
+    ports:
+      - "6379:6379"
 
     
